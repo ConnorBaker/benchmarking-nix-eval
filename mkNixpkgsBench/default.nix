@@ -52,6 +52,7 @@ stdenvNoCC.mkDerivation {
   # restricted eval.
   # NOTE: Still need to create the dummy stores since Nix will try to realize derivations even when provided with
   # the dummy store.
+  # NOTE: eval-system and eval-store might be too new for some Nix versions.
   nixEvalArgs = [
     # "--print-build-logs"
     # "--show-trace"
@@ -59,14 +60,14 @@ stdenvNoCC.mkDerivation {
     "--offline"
     "--system"
     system
-    "--eval-system"
-    system
+    # "--eval-system"
+    # system
     "--read-only"
     "--json"
     "--store"
     "dummy://"
-    "--eval-store"
-    "dummy://"
+    # "--eval-store"
+    # "dummy://"
   ];
 
   # "NIX_CONF_DIR" is set manually and so is not included.

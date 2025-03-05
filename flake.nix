@@ -39,7 +39,11 @@
         timeFormatJson = final.callPackage ./timeFormatJson { };
         mkNixpkgsBench = final.callPackage ./mkNixpkgsBench { };
         matrixed = final.callPackage ./matrixed {
-          numRuns = 3;
+          # NOTE:
+          # echo "1" | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo
+          # sudo cpupower set -b 0
+          # nom build --builders '' -L --max-jobs 1 --cores 1 .#matrixed.all-benchmarks
+          numRuns = 20;
         };
       };
       perSystem =
